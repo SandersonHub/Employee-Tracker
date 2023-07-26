@@ -46,6 +46,55 @@ function startApplication()
       'Update Employee Role',
       'Exit',
     ]
+  });
+  //function to handle the users choice
+  function userchoice(choice) {
+    //choice is the users
+    choice
+    //callback function
+      .then((answer) => {
+        switch (answer.Act) {
+          case 'View Department':
+            //switch / case statement checks the value of anwser.act
+            viewDepartment();
+            //breaks out of the switch statement
+            break;
+  
+          case 'View Roles':
+            viewRoles();
+            break;
+  
+          case 'View Employees':
+            viewEmployees();
+            break;
+  
+          case 'Add Department':
+            addDepartment();
+            break;
+  
+          case 'Add Role':
+            addRole();
+            break;
+  
+          case 'Add Employee':
+            addEmployee();
+            break;
+  
+          case 'Update Employee Role':
+            updateEmployeeRole();
+            break;
+  
+          case 'Exit':
+            connection.end();
+            break;
+          //default is used if no case matches the switch above
+          default:
+            console.log(`Action DID NOT work ${answer.action}`);
+            break;  
+        }
+      })
+      //error checking
+      .catch((err) => {
+        console.error('Err:', err);
+      });
   }
-
-  )
