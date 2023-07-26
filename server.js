@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   //where MYSQL is running
   host: 'localhost',
   //port MYSQL is running on (this could be any random port)
-  port: 3301,
+  port: 3001,
   //default username
   user: 'root',
   password: 'Tinroad25!',
@@ -24,29 +24,37 @@ connection.connect((err) => {
   startApplication();
 });
 
-//function to start the applicaiton and will prompt the user with a these options below
-function startApplication() 
-//npm package
-//inquirer displays a prompt for the user
+//function to start the application and will prompt the user with these options below
+function startApplication() {
+  //npm package
+  //inquirer displays a prompt for the user
   inquirer
-  .Prompt({
-    //displays the name of the prompt / used to access users information
-    name: 'Act',
-    //type = list
-    type: 'list',
-    message: 'what do you need to do?',
-    //listed of choices the user can pick from
-    choices: [
-      'View Departmnet',
-      'View Roles',
-      'View Employees',
-      'Add Department',
-      'Add Role',
-      'Add Employee',
-      'Update Employee Role',
-      'Exit',
-    ]
-  });
+    .prompt({
+      //displays the name of the prompt / used to access users information
+      name: 'Act',
+      //type = list
+      type: 'list',
+      message: 'What do you need to do?',
+      //list of choices the user can pick from
+      choices: [
+        'View Department',
+        'View Roles',
+        'View Employees',
+        'Add Department',
+        'Add Role',
+        'Add Employee',
+        'Update Employee Role',
+        'Exit',
+      ]
+    })
+    .then((answer) => {
+      //function to handle the user's choice
+      userChoice(answer.Act); // Calling the userChoice function with the chosen action
+    })
+    .catch((err) => {
+      console.error('Err:', err);
+    });
+}
   //function to handle the users choice
   function userchoice(choice) {
     //choice is the users

@@ -1,8 +1,27 @@
 {
   "dependencies": {
     "dotenv": "^16.3.1",
-    "inquirer": "^9.2.8",
+    "inquirer": "^8.2.5",
+    "mysql": "^2.18.1",
     "mysql2": "^3.5.2",
     "sequelize": "^6.32.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "employee-tracker",
+  "description": "This application is called \"Note Taker\" that can be used to save and take notes at your convinecne. This applicaiton is built with JavaScript, Node, Express.js, Bootstrap and HTML. This applicaiton is deployed through Github and Heroku.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandersonHub/Employee-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandersonHub/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/SandersonHub/Employee-Tracker#readme"
 }
