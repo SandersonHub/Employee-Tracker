@@ -24,5 +24,28 @@ connection.connect((err) => {
   startApplication();
 });
 
-//function to start applicaiton
+//function to start the applicaiton and will prompt the user with a these options below
 function startApplication() 
+//npm package
+//inquirer displays a prompt for the user
+  inquirer
+  .Prompt({
+    //displays the name of the prompt / used to access users information
+    name: 'Act',
+    //type = list
+    type: 'list',
+    message: 'what do you need to do?',
+    //listed of choices the user can pick from
+    choices: [
+      'View Departmnet',
+      'View Roles',
+      'View Employees',
+      'Add Department',
+      'Add Role',
+      'Add Employee',
+      'Update Employee Role',
+      'Exit',
+    ]
+  }
+
+  )
