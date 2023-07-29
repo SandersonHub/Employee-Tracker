@@ -1,5 +1,5 @@
 //import and require MYSQL and inquirer
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
 // this creates a "MySQL connection"
@@ -7,19 +7,19 @@ const connection = mysql.createConnection({
   //where MYSQL is running
   host: 'localhost',
   //port MYSQL is running on (this could be any random port)
-  port: 3001,
+  port: 3306,
   //default username
   user: 'root',
   password: 'Tinroad25!',
   //database name (could be anything)
-  database: 'job_tracker_DB',
+  database: 'employee_DB',
 });
 
 // Connection to db
 connection.connect((err) => {
   //error handling
   if (err) throw err;
-  console.log('Connected MySQL database');
+  console.log('Connect too MySQL db');
   //starts the main command line after the 
   startApplication();
 });
@@ -65,7 +65,7 @@ function startApplication() {
           case 'View Department':
             //switch / case statement checks the value of anwser.act
             viewDepartment();
-            //breaks out of the switch statement
+            //breaks out of the switch statement and moves to the next case statement
             break;
   
           case 'View Roles':

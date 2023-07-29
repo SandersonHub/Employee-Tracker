@@ -5,17 +5,17 @@ values  ("Engineering"),
         ("Finance"),
         ("Interconnected"),
         ("Sales");
-
---data table
+        --place holders
 
 INSERT INTO role (title, salary, department_id)
-values
-
---data table
-
+values  ('title')
+        ('salary')
+    --placeholdrs
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-values
+values  ("first_name")
+        ("last_name")
+        --place holders
 
 --data table
 
