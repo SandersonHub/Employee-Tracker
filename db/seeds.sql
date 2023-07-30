@@ -1,23 +1,18 @@
---query putting data into department table
+USE employee_db;
+--database / table
+
 INSERT INTO department (name)
---values data being put into the table (into a column)
-values  ("Engineering"),
-        ("Finance"),
-        ("Interconnected"),
-        ("Sales");
-        --place holders
+VALUES ("Engineering"),
+       ("Finance"),
+       ("Interconnected"),
+       ("Sales");
 
+-- Insert data into the 'role' table
 INSERT INTO role (title, salary, department_id)
-values  ('title')
-        ('salary')
-    --placeholdrs
+VALUES ('Software Engineer', 100000, 1), --Job title, Salary, and which deparment ID
+       ('Security Manager', 85000, 3);    
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-values  ("first_name")
-        ("last_name")
-        --place holders
+-- Insert data into the 'employee' table
+INSERT INTO employee (first_name, last_name, role_id)
+VALUES ('Bradley', 'Sanderson', 1); -- First name, last name, and role ID
 
---data table
-
-
---place holders

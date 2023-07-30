@@ -1,108 +1,118 @@
-//import and require MYSQL and inquirer
+const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+//importing express, mysql and inquirer
 
-// this creates a "MySQL connection"
-const connection = mysql.createConnection({
-  //where MYSQL is running
+//heroku
+const PORT = process.env.PORT || 3001;
+
+const app = express();
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Create a MySQL connection for Express server
+//db dbExpress, connection to the database
+const dbExpress = mysql.createConnection({
   host: 'localhost',
-  //port MYSQL is running on (this could be any random port)
-  port: 3306,
-  //default username
   user: 'root',
   password: 'Tinroad25!',
-  //database name (could be anything)
-  database: 'employee_DB',
+  database: 'employee_db'
 });
 
-// Connection to db
-connection.connect((err) => {
-  //error handling
-  if (err) throw err;
-  console.log('Connect too MySQL db');
-  //starts the main command line after the 
-  startApplication();
-});
-
-//function to start the application and will prompt the user with these options below
-function startApplication() {
-  //npm package
-  //inquirer displays a prompt for the user
+// Helper function to display options
+function displayOptions() {
   inquirer
-    .prompt({
-      //displays the name of the prompt / used to access users information
-      name: 'Act',
-      //type = list
-      type: 'list',
-      message: 'What do you need to do?',
-      //list of choices the user can pick from
-      choices: [
-        'View Department',
-        'View Roles',
-        'View Employees',
-        'Add Department',
-        'Add Role',
-        'Add Employee',
-        'Update Employee Role',
-        'Exit',
-      ]
-    })
-    .then((answer) => {
-      //function to handle the user's choice
-      userChoice(answer.Act); // Calling the userChoice function with the chosen action
-    })
-    .catch((err) => {
-      console.error('Err:', err);
+    .prompt([
+      {
+        //list of options
+        type: 'list',
+        //name of the prompt
+        name: 'action',
+        //the message that asks the user what they want to do
+        message: 'What would you like to do?',
+        //choices that the user can choose from
+        choices: [
+          'View all departments',
+          'View all roles',
+          'View all employees',
+          'Add a new department',
+          'Add a new role',
+          'Add a new employee',
+          'Exit',
+        ],
+      },
+    ])
+    //chaining a then method to a promise
+    //promise is resolved then the then method is called
+    .then(({ action }) => {
+      //evaluates the action
+      //case / switch statement, takes the code block and executes it
+      //break will move it to the next case
+      switch (action) {
+        case 'View all departments':
+          viewDepartments();
+          break;
+        case 'View all roles':
+          viewRoles();
+          break;
+        case 'View all employees':
+          viewEmployees();
+          break;
+        // case 'Add a new department':
+        //   addDepartment();
+        //   break;
+        // case 'Add a new role':
+        //   addRole();
+        //   break;
+        // case 'Add a new employee':
+        //   addEmployee();
+        //   break;
+        case 'Exit':
+          console.log('bye');
+          break;
+      }
     });
 }
-  //function to handle the users choice
-  function userchoice(choice) {
-    //choice is the users
-    choice
-    //callback function
-      .then((answer) => {
-        switch (answer.Act) {
-          case 'View Department':
-            //switch / case statement checks the value of anwser.act
-            viewDepartment();
-            //breaks out of the switch statement and moves to the next case statement
-            break;
-  
-          case 'View Roles':
-            viewRoles();
-            break;
-  
-          case 'View Employees':
-            viewEmployees();
-            break;
-  
-          case 'Add Department':
-            addDepartment();
-            break;
-  
-          case 'Add Role':
-            addRole();
-            break;
-  
-          case 'Add Employee':
-            addEmployee();
-            break;
-  
-          case 'Update Employee Role':
-            updateEmployeeRole();
-            break;
-  
-          case 'Exit':
-            connection.end();
-            break;
-          //default is used if no case matches the switch above
-          default:
-            console.log(`Action DID NOT work ${answer.action}`);
-            break;  
-        }
-      })
-      //error checking
-      .catch((err) => {
-        console.error('Err:', err);
-      });
-  }
+
+// View all departments
+function viewDepartments() {
+  const sql = 'SELECT id, name FROM department';
+  //sql string to retrive the ID and name from the department table
+  dbExpress.query(sql, (err, rows) => {
+    //query method to execute the sql string
+    if (err) {
+      console.log('Error:', err.message);
+      //if error throw an error with message
+    }
+  });
+}
+
+// View all roles
+function viewRoles() {
+  const sql = 'SELECT id, title, salary, department_id FROM role';
+  dbExpress.query(sql, (err, rows) => {
+    if (err) {
+      console.log('Error:', err);
+    }
+  });
+}
+
+// View all employees
+function viewEmployees() {
+  const sql = 'SELECT id, first_name, last_name, role_id, manager_id FROM employee';
+  dbExpress.query(sql, (err, rows) => {
+    if (err) {
+      console.log('Error:', err.message);
+      displayOptions();
+    }
+  });
+}
+
+
+
+app.listen(PORT, () => {
+  console.log(`Running on (if working) ${PORT}`);
+});
+
+// Call the displayOptions function at the end to start the inquirer prompts
+displayOptions();
