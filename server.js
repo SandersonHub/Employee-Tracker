@@ -78,7 +78,8 @@ function displayOptions() {
 function viewDepartments() {
   const sql = 'SELECT id, name FROM department';
   //sql string to retrive the ID and name from the department table
-  dbExpress.query(sql, (err, rows) => {
+  //
+  dbExpress.query(sql, (err) => {
     //query method to execute the sql string
     if (err) {
       console.log('Error:', err.message);
@@ -90,7 +91,7 @@ function viewDepartments() {
 // View all roles
 function viewRoles() {
   const sql = 'SELECT id, title, salary, department_id FROM role';
-  dbExpress.query(sql, (err, rows) => {
+  dbExpress.query(sql, (err) => {
     if (err) {
       console.log('Error:', err);
     }
@@ -100,7 +101,7 @@ function viewRoles() {
 // View all employees
 function viewEmployees() {
   const sql = 'SELECT id, first_name, last_name, role_id, manager_id FROM employee';
-  dbExpress.query(sql, (err, rows) => {
+  dbExpress.query(sql, (err) => {
     if (err) {
       console.log('Error:', err.message);
       displayOptions();

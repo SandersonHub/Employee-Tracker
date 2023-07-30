@@ -1,6 +1,6 @@
 # Employee Trakcer
 
-This application is called "Note Taker" that can be used to save and take notes at your convinecne. This applicaiton is built with JavaScript, Node, Express.js, Bootstrap and HTML. This applicaiton is deployed through Github and Heroku. 
+This application is called "Employee Tracker" that can be used to track employees on a global level. This applicaiton is built with JavaScript, Node, Express.js, MySQL. This applicaiton is deployed through Github and Heroku. 
 
 ## Getting Started
 
@@ -20,14 +20,14 @@ Download the code or visit the direct Heroku link below.
 
 Please use the Heroku direct application link to access the the webpage
 
-https://note-taker-21532342-c72d5d095233.herokuapp.com/notes
+https://employee-tracker23445234-5f9a60d15d96.herokuapp.com/
 
 ## Built With
 
 * [JavaScript](https://www.javascript.com/) - FrontEnd
 * [Node](https://nodejs.org/en) - Backend
 * [Express](https://expressjs.com/) - Backend Framework
-* [BootStrap](https://getbootstrap.com/) - Styling
+* [MySQL](https://www.mysql.com/) - Backend
 
 ## Authors
 
@@ -35,12 +35,11 @@ https://note-taker-21532342-c72d5d095233.herokuapp.com/notes
 
 ## Future Development
 
-* In the future I would like to polish out the applicaiton and add some more styling, I would also like the delete function to work as intended. The delete icon in the applicaiton is just a placeholder.
-
+* In the future I would like to add more categories to the exsisting framework.
 ## Acknowledgments
 
 * Huge Thank you to Github user [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for the README template.
 
 ## Feature Photos
 
-![chrome_1miynS8yXA](https://github.com/SandersonHub/Note-Taker-Finalized/assets/128574459/fc24da37-ca0d-44ba-9404-6da7e02c3a01)
+![Alt text](Code_ENHn5XF5in.png)
