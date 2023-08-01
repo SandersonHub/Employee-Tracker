@@ -93,7 +93,7 @@ function viewDepartments() {
   //fields is the parameter that will contain information about the returned results fields
   dbExpress.query(sql, function (err, result, fields) {
     if (err) throw err;
-    console.log(result);
+    console.table(result);
     displayOptions();
   });
 }
@@ -106,7 +106,7 @@ function viewRoles() {
     if (err) {
       console.log('Error:', err);
     }
-    console.log(result);
+    console.table(result);
     displayOptions();
   });
 }
@@ -120,7 +120,7 @@ function viewEmployees() {
       console.log('Error:', err);
       return;
     }
-    console.log(result);
+    console.table(result);
     displayOptions();
   });
 }
