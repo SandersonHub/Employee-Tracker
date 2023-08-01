@@ -18,7 +18,7 @@ Download the code or visit the direct Heroku link below.
 
 ## Deployment
 
-Please use the Heroku direct application link to access the the webpage
+Please use the Github direct application link to access the code base.
 
 https://employee-tracker23445234-5f9a60d15d96.herokuapp.com/
 
@@ -36,9 +36,18 @@ https://employee-tracker23445234-5f9a60d15d96.herokuapp.com/
 ## Future Development
 
 * In the future I would like to add more categories to the exsisting framework.
+
 ## Acknowledgments
 
 * Huge Thank you to Github user [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for the README template.
+
+## Resources Used
+
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+
+* https://www.w3schools.com/js/js_callback.asp
+
+* https://www.w3schools.com/js/js_switch.asp
 
 ## Feature Photos
 

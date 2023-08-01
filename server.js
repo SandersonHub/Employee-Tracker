@@ -199,36 +199,55 @@ function addEmployee() {
 
 //update an employee role
 
+// Function to fetch the list of employees from the database
+function getEmployeesList(callback) { //gets the list of employees from the database. (Callback) is a function that passes to an argument to another function
+  const sql = 'SELECT * FROM employee'; // Query to select an employee
+  dbExpress.query(sql, (err, employees) => {
+    if (err) { //error checking
+      console.error(err);
+      callback([]);
+    } else {
+      callback(employees); //callback function to return the list of employees
+    }
+  });
+}
+
 function updateEmployeeRole() {
-  inquirer.prompt([
-    {
-      name: "employeeFirstName",
-      type: "input",
-      message: "Enter the first name of the Employee you would like to change:"
-    },
-    {
-      name: "employeeLastName",
-      type: "input",
-      message: "Enter the last name of the Employee you would like to change:"
-    },
-    {
-      name: "newRoleId",
-      type: "input",
-      message: "Enter the new role ID for the Employee:"
-    },
-  ]).then(answers => {
-    const { employeeFirstName, employeeLastName, newRoleId } = answers; // Destructure, to extract the three variables from the answers object
-    const sql = 'UPDATE employee SET role_id = ? WHERE first_name = ? AND last_name = ?'; //defines the SQL query as a string, with ? placeholder
-    dbExpress.query(sql, [newRoleId, employeeFirstName, employeeLastName], (err, result) => { // Passes the three variables as an array to the query 
-      if (err) {
-        console.error(err);
-      } else {
-        console.log("Employee role updated successfully!");
-      }
-      displayOptions(); //re-display options after updated role
+  // fetches the list of employees from the database
+  getEmployeesList((employees) => { //takes an employees parameter
+    const changeEmployee = employees.map((employee) => ({ //Map, creates a new array with the results of calling a function for every array element
+      name: `${employee.first_name} ${employee.last_name}`, // (` `) initializes a template literal, and employee.first_name and employee.last_name are the expressions
+      //name displays the first and last name of the employee 
+      value: employee.id,
+    }));
+
+    inquirer.prompt([ //prompt to ask the user to pick an employee and also it will have select a new role id
+      {
+        name: "employeeId",
+        type: "list",
+        message: "Please pick the Employee you would like to change the role for:",
+        choices: changeEmployee,
+      },
+      {
+        name: "newRoleId",
+        type: "input",
+        message: "Enter the new role ID for the Employee:",
+      },
+    ]).then(answers => {
+      const { employeeId, newRoleId } = answers; //destructuring assignment syntax, anwser is the object that specific to employeeId and newRoleId
+      const sql = 'UPDATE employee SET role_id = ? WHERE id = ?';
+      dbExpress.query(sql, [newRoleId, employeeId], (err, result) => { //[newRoleId, employeeId], array that displays the values that will be inserted
+        if (err) { //error checking
+          console.error(err);
+        } else {
+          console.log("Employee role updated successfully. yay!");
+        }
+        displayOptions();
+      });
     });
   });
 }
+
 
 
 app.listen(PORT, () => {
