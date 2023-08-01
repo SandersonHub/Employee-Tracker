@@ -5,7 +5,8 @@ INSERT INTO department (name)
 VALUES ("Engineering"),
        ("Finance"),
        ("Interconnected"),
-       ("Sales");
+       ("Legal")
+
 
 -- Insert data into the 'role' table
 INSERT INTO role (title, salary, department_id)
