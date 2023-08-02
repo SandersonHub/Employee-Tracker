@@ -20,7 +20,7 @@ Download the code or visit the direct Heroku link below.
 
 Please use the Github direct application link to access the code base.
 
-https://employee-tracker23445234-5f9a60d15d96.herokuapp.com/
+https://github.com/SandersonHub/Employee-Tracker
 
 ## Built With
 
