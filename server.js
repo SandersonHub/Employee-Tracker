@@ -194,6 +194,7 @@ function addEmployee() {
     console.log("Employee Sucessfully Added:", answers);
   }).catch(error => {
     console.error("Error occurred:", error);
+    displayOptions();
   });
 }
 
