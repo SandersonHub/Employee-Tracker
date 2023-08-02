@@ -53,5 +53,6 @@ https://employee-tracker23445234-5f9a60d15d96.herokuapp.com/
 
 ![Code_5IK7xwMXSH](https://github.com/SandersonHub/Employee-Tracker/assets/128574459/57628713-ff86-4c44-afb5-5777f8a40714)
 
+![Code_DqSat5D7EV](https://github.com/SandersonHub/Employee-Tracker/assets/128574459/7c125c5f-6e80-434c-87a3-e4264e19c335)
 ![Code_j1WwtCfmLp](https://github.com/SandersonHub/Employee-Tracker/assets/128574459/cc30e671-ebf8-4256-92ec-1c97c9512dca)
 
