@@ -6,11 +6,9 @@ This application is called "Employee Tracker" that can be used to track employee
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-1. Open the Heroku link below.
-2. Once on the page click "Get Started".
-3. Type a title in the "Note Title" Section.
-4. Type some text in the "Note Text" section.
-5. Lastly, click the save icon in the top right of the webpage.
+1. Download the code.
+2. Open your favorite coding program.
+3. Run the program through the terminal using Node and MySQL.
 
 ### Installing
 
